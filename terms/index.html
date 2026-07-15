@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MOVA — Términos de Servicio</title>
+    <style>
+      body {
+        margin: 0;
+        background: #0b1220;
+        color: #f5f7fa;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+      }
+      .wrap {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 32px 24px 80px;
+      }
+      h1 {
+        font-size: 24px;
+        margin-bottom: 4px;
+      }
+      h2 {
+        font-size: 17px;
+        margin-top: 32px;
+        color: #f5f7fa;
+      }
+      p, li {
+        color: #a3adc2;
+        font-size: 15px;
+      }
+      .draft-banner {
+        background: #3a2a10;
+        color: #f0c674;
+        border-radius: 10px;
+        padding: 12px 16px;
+        font-size: 13px;
+        margin-bottom: 24px;
+      }
+      .lang-switch {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+      .lang-switch button {
+        background: #16202f;
+        color: #f5f7fa;
+        border: 1px solid #253247;
+        border-radius: 999px;
+        padding: 6px 16px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .lang-switch button.active {
+        background: #208aef;
+        border-color: #208aef;
+      }
+      .lang { display: none; }
+      .lang.active { display: block; }
+      a { color: #208aef; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="lang-switch">
+        <button id="btn-es" class="active" onclick="setLang('es')">Español</button>
+        <button id="btn-en" onclick="setLang('en')">English</button>
+      </div>
+
+      <div id="lang-es" class="lang active">
+        <h1>Términos de Servicio de MOVA</h1>
+        <div class="draft-banner">Borrador para beta — revisión legal pendiente antes del lanzamiento público.</div>
+
+        <h2>1. Qué es MOVA</h2>
+        <p>MOVA es una plataforma que conecta a personas para organizar y sumarse a salidas de running. MOVA provee la plataforma; las salidas las crean, organizan y conducen los propios usuarios. MOVA no es organizador, garante ni supervisor de ninguna salida.</p>
+
+        <h2>2. Asunción de riesgo</h2>
+        <p>Correr implica un riesgo físico inherente. Encontrarse y entrenar con personas que no conocés implica un riesgo personal adicional. Al usar MOVA, asumís voluntariamente esos riesgos. Te recomendamos elegir puntos de encuentro públicos y concurridos, avisar a alguien de confianza sobre tus planes, y confiar en tu instinto — más detalles en el Centro de Seguridad de la app.</p>
+
+        <h2>3. Reputación y scores</h2>
+        <p>Los puntajes de host y de runner, y cualquier indicador de verificación, reflejan el historial de uso de la app. No son una verificación de antecedentes ni una garantía de seguridad, comportamiento o idoneidad de ninguna persona.</p>
+
+        <h2>4. Contenido y conducta prohibidos</h2>
+        <p>No está permitido publicar ni enviar contenido ilegal, violento, discriminatorio, sexual no consentido, de acoso, spam, ni que ponga en riesgo a otras personas. Prohibimos explícita y totalmente cualquier forma de explotación o abuso sexual infantil (CSAE); estas cuentas se suspenden de inmediato y, cuando corresponde, se reporta a las autoridades pertinentes.</p>
+
+        <h2>5. Tipos de salida</h2>
+        <p>Los tipos de salida (por ejemplo, solo mujeres o solo hombres) existen para que las personas encuentren el grupo adecuado para su entrenamiento, no para fomentar divisiones. Son una preferencia de organización, opcional y transparente antes de unirse, no una restricción de acceso a la app.</p>
+
+        <h2>6. Reportes, bloqueo y suspensión</h2>
+        <p>Podés reportar contenido o usuarios, y bloquear a otras personas en cualquier momento. Revisamos los reportes dentro de las 24-48 horas. Podemos advertir, suspender o eliminar cuentas que incumplan estos términos, explicando siempre el motivo y ofreciendo una vía de apelación por email.</p>
+
+        <h2>7. Límite de responsabilidad</h2>
+        <p>En la medida permitida por la ley aplicable, MOVA no es responsable por daños derivados de la conducta de los usuarios o de la participación en salidas organizadas a través de la plataforma. Cada usuario es responsable de su propia conducta y, si organiza una salida, de la conducta general de esa salida.</p>
+
+        <h2>8. Cuenta y datos</h2>
+        <p>Podés borrar tu cuenta desde la app en cualquier momento. Ver nuestra <a href="/privacy">Política de Privacidad</a> para el detalle de qué datos guardamos y por cuánto tiempo.</p>
+
+        <h2>9. Contacto</h2>
+        <p>Soporte: <a href="mailto:soporte@mova.run">soporte@mova.run</a></p>
+
+        <h2>10. Jurisdicción</h2>
+        <p>La exigibilidad de estos términos puede variar según tu país de residencia. Esta es una nota informativa, no asesoramiento legal.</p>
+      </div>
+
+      <div id="lang-en" class="lang">
+        <h1>MOVA Terms of Service</h1>
+        <div class="draft-banner">Beta draft — pending legal review before public launch.</div>
+
+        <h2>1. What MOVA is</h2>
+        <p>MOVA is a platform that connects people to organize and join running meetups. MOVA provides the platform; runs are created, organized and led by users themselves. MOVA is not the organizer, guarantor, or supervisor of any run.</p>
+
+        <h2>2. Assumption of risk</h2>
+        <p>Running carries an inherent physical risk. Meeting and training with people you don't know carries an additional personal risk. By using MOVA, you voluntarily assume those risks. We recommend choosing public, busy meeting points, telling someone you trust about your plans, and trusting your instincts — see the in-app Safety Center for more.</p>
+
+        <h2>3. Reputation and scores</h2>
+        <p>Host and runner scores, and any verification indicator, reflect in-app usage history. They are not a background check or a guarantee of anyone's safety, behavior, or suitability.</p>
+
+        <h2>4. Prohibited content and conduct</h2>
+        <p>You may not post or send illegal, violent, discriminatory, non-consensual sexual, harassing, spam content, or content that endangers others. We explicitly and completely prohibit any form of child sexual abuse or exploitation (CSAE); such accounts are suspended immediately and, where applicable, reported to the relevant authorities.</p>
+
+        <h2>5. Run types</h2>
+        <p>Run types (e.g. women-only or men-only) exist so people can find the right group for their training, not to foster division. They are an optional, transparent organizer preference shown before joining, not an access restriction to the app.</p>
+
+        <h2>6. Reports, blocking and suspension</h2>
+        <p>You can report content or users, and block others at any time. We review reports within 24-48 hours. We may warn, suspend, or remove accounts that violate these terms, always explaining why and offering an appeal path by email.</p>
+
+        <h2>7. Limitation of liability</h2>
+        <p>To the extent permitted by applicable law, MOVA is not liable for damages arising from user conduct or participation in runs organized through the platform. Each user is responsible for their own conduct and, if hosting a run, for the general conduct of that run.</p>
+
+        <h2>8. Account and data</h2>
+        <p>You can delete your account from the app at any time. See our <a href="/privacy">Privacy Policy</a> for details on what data we store and for how long.</p>
+
+        <h2>9. Contact</h2>
+        <p>Support: <a href="mailto:soporte@mova.run">soporte@mova.run</a></p>
+
+        <h2>10. Jurisdiction</h2>
+        <p>Enforceability of these terms may vary by your country of residence. This is an informational note, not legal advice.</p>
+      </div>
+    </div>
+    <script>
+      function setLang(lang) {
+        document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      }
+      if (!navigator.language.startsWith('es')) setLang('en');
+    </script>
+  </body>
+</html>

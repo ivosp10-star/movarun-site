@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MOVA — Correr en grupo</title>
+    <meta name="description" content="Encontrá salidas de running cerca tuyo y salí a correr acompañado. Descargá la beta para Android." />
+    <meta property="og:title" content="MOVA — Correr en grupo" />
+    <meta property="og:description" content="Encontrá salidas de running cerca tuyo y salí a correr acompañado. Descargá la beta para Android." />
+    <meta property="og:url" content="https://movarun.com" />
+    <style>
+      :root {
+        --bg: #0a1a20;
+        --surface: #112a31;
+        --border: #22404a;
+        --text: #eaf7fb;
+        --muted: #9db2bb;
+        --primary: #109bc9;
+        --primary-soft: #24b4de;
+        --accent: #ff6a4d;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+      }
+      .wrap {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+      }
+      .lang-switch {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 36px;
+      }
+      .lang-switch button {
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 6px 16px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .lang-switch button.active {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+      }
+      .lang { display: none; }
+      .lang.active { display: block; }
+      .beta-badge {
+        display: inline-block;
+        background: var(--surface);
+        color: var(--primary-soft);
+        border-radius: 999px;
+        padding: 4px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      h1 {
+        font-size: 42px;
+        letter-spacing: 2px;
+        margin: 0 0 8px;
+      }
+      .pitch {
+        font-size: 19px;
+        color: var(--text);
+        margin: 0 0 10px;
+        font-weight: 600;
+      }
+      .sub {
+        font-size: 16px;
+        color: var(--muted);
+        margin: 0 0 32px;
+      }
+      .steps {
+        display: grid;
+        gap: 12px;
+        margin: 0 0 36px;
+        padding: 0;
+        list-style: none;
+        counter-reset: step;
+      }
+      .steps li {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 14px 16px 14px 54px;
+        position: relative;
+        font-size: 15px;
+      }
+      .steps li::before {
+        counter-increment: step;
+        content: counter(step);
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cta {
+        display: block;
+        text-align: center;
+        background: var(--accent);
+        color: #08303b;
+        font-weight: 700;
+        font-size: 17px;
+        text-decoration: none;
+        border-radius: 999px;
+        padding: 16px 24px;
+        margin-bottom: 10px;
+      }
+      .cta:active { opacity: 0.85; }
+      .cta-note {
+        text-align: center;
+        font-size: 13px;
+        color: var(--muted);
+        margin: 0 0 32px;
+      }
+      .qr-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 32px;
+      }
+      .qr-box {
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        flex-shrink: 0;
+        width: 148px;
+        height: 148px;
+      }
+      .qr-box svg { display: block; width: 100%; height: 100%; }
+      .qr-text { font-size: 14px; color: var(--muted); }
+      .fine {
+        font-size: 13px;
+        color: var(--muted);
+        border-left: 3px solid var(--border);
+        padding-left: 12px;
+        margin-bottom: 8px;
+      }
+      .footer-links {
+        margin-top: 44px;
+        display: flex;
+        gap: 20px;
+        font-size: 13px;
+      }
+      .footer-links a { color: var(--muted); }
+      a { color: var(--primary-soft); }
+      @media (max-width: 480px) {
+        .qr-card { display: none; } /* en el teléfono el botón alcanza; el QR es para verlo desde una compu */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="lang-switch">
+        <button id="btn-es" class="active" onclick="setLang('es')">Español</button>
+        <button id="btn-en" onclick="setLang('en')">English</button>
+      </div>
+
+      <div id="lang-es" class="lang active">
+        <span class="beta-badge">Beta abierta · Android</span>
+        <h1>MOVA</h1>
+        <p class="pitch">Correr solo está bien. Correr acompañado es mejor.</p>
+        <p class="sub">
+          MOVA es una app para gente que corre y no quiere hacerlo sola: un mapa con salidas de
+          running reales cerca tuyo, organizadas por corredores como vos. Elegís una que vaya con tu
+          ritmo, tu distancia y tu horario, te sumás, y coordinás por el chat del grupo.
+        </p>
+
+        <ol class="steps">
+          <li>Explorá el mapa y encontrá salidas cerca tuyo.</li>
+          <li>Sumate a la que va con tu ritmo y distancia, o creá la tuya.</li>
+          <li>Coordinen por el chat y salgan a correr juntos.</li>
+        </ol>
+
+        <a class="cta" href="/apk">Descargar la app para Android</a>
+        <p class="cta-note">Gratis · Beta abierta · iOS próximamente</p>
+
+        <div class="qr-card">
+          <div class="qr-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h27v27H0z"/><path stroke="#000000" d="M1 1.5h7m4 0h3m2 0h1m1 0h7M1 2.5h1m5 0h1m3 0h1m2 0h4m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m3 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h2m1 0h3m2 0h1m1 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h1m2 0h2m1 0h2m2 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h1m5 0h1m1 0h1M1 9.5h1m1 0h5m3 0h1m2 0h1m4 0h5M3 10.5h1m2 0h1m2 0h1m1 0h2m1 0h1m5 0h1m3 0h1M4 11.5h1m1 0h4m2 0h5m1 0h1m1 0h1m1 0h1m1 0h2M3 12.5h2m1 0h1m1 0h2m1 0h3m1 0h1m1 0h2m1 0h2m3 0h1M3 13.5h1m1 0h1m1 0h2m1 0h1m2 0h3m2 0h2m1 0h1m1 0h3M1 14.5h1m1 0h3m11 0h2m1 0h1m1 0h1m1 0h1M1 15.5h1m1 0h2m1 0h2m1 0h5m2 0h7m1 0h2M1 16.5h1m2 0h1m4 0h1m1 0h2m2 0h3m2 0h2m3 0h1M1 17.5h1m1 0h1m1 0h3m1 0h1m1 0h2m1 0h8m1 0h1M9 18.5h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h2M1 19.5h7m3 0h1m5 0h1m1 0h1m1 0h1m1 0h3M1 20.5h1m5 0h1m1 0h1m3 0h1m3 0h1m3 0h2m1 0h1M1 21.5h1m1 0h3m1 0h1m1 0h3m1 0h9m1 0h3M1 22.5h1m1 0h3m1 0h1m1 0h1m4 0h1m1 0h4m1 0h5M1 23.5h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m5 0h2m1 0h1M1 24.5h1m5 0h1m2 0h1m1 0h1m2 0h1m1 0h1m1 0h4m2 0h1M1 25.5h7m1 0h2m1 0h2m4 0h8"/></svg></div>
+          <div class="qr-text">
+            ¿Estás viendo esto desde una computadora?<br />
+            Escaneá el QR con tu teléfono para descargar la app directo.
+          </div>
+        </div>
+
+        <p class="fine">
+          Durante la beta la app se instala fuera de Google Play, así que Android te va a pedir
+          permiso para "instalar apps de origen desconocido". Es un paso normal: aceptalo solo para
+          esta descarga.
+        </p>
+
+        <div class="footer-links">
+          <a href="/terms">Términos de Servicio</a>
+          <a href="/privacy">Política de Privacidad</a>
+        </div>
+      </div>
+
+      <div id="lang-en" class="lang">
+        <span class="beta-badge">Open beta · Android</span>
+        <h1>MOVA</h1>
+        <p class="pitch">Running alone is fine. Running with others is better.</p>
+        <p class="sub">
+          MOVA is an app for runners who'd rather not run alone: a map of real running meetups near
+          you, organized by runners like you. Pick one that matches your pace, distance and
+          schedule, join it, and coordinate in the group chat.
+        </p>
+
+        <ol class="steps">
+          <li>Explore the map and find runs near you.</li>
+          <li>Join one that matches your pace and distance, or create your own.</li>
+          <li>Coordinate in the chat and go run together.</li>
+        </ol>
+
+        <a class="cta" href="/apk">Download the Android app</a>
+        <p class="cta-note">Free · Open beta · iOS coming soon</p>
+
+        <div class="qr-card">
+          <div class="qr-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h27v27H0z"/><path stroke="#000000" d="M1 1.5h7m4 0h3m2 0h1m1 0h7M1 2.5h1m5 0h1m3 0h1m2 0h4m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m3 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h2m1 0h3m2 0h1m1 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h1m2 0h2m1 0h2m2 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h1m5 0h1m1 0h1M1 9.5h1m1 0h5m3 0h1m2 0h1m4 0h5M3 10.5h1m2 0h1m2 0h1m1 0h2m1 0h1m5 0h1m3 0h1M4 11.5h1m1 0h4m2 0h5m1 0h1m1 0h1m1 0h1m1 0h2M3 12.5h2m1 0h1m1 0h2m1 0h3m1 0h1m1 0h2m1 0h2m3 0h1M3 13.5h1m1 0h1m1 0h2m1 0h1m2 0h3m2 0h2m1 0h1m1 0h3M1 14.5h1m1 0h3m11 0h2m1 0h1m1 0h1m1 0h1M1 15.5h1m1 0h2m1 0h2m1 0h5m2 0h7m1 0h2M1 16.5h1m2 0h1m4 0h1m1 0h2m2 0h3m2 0h2m3 0h1M1 17.5h1m1 0h1m1 0h3m1 0h1m1 0h2m1 0h8m1 0h1M9 18.5h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h2M1 19.5h7m3 0h1m5 0h1m1 0h1m1 0h1m1 0h3M1 20.5h1m5 0h1m1 0h1m3 0h1m3 0h1m3 0h2m1 0h1M1 21.5h1m1 0h3m1 0h1m1 0h3m1 0h9m1 0h3M1 22.5h1m1 0h3m1 0h1m1 0h1m4 0h1m1 0h4m1 0h5M1 23.5h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m5 0h2m1 0h1M1 24.5h1m5 0h1m2 0h1m1 0h1m2 0h1m1 0h1m1 0h4m2 0h1M1 25.5h7m1 0h2m1 0h2m4 0h8"/></svg></div>
+          <div class="qr-text">
+            Reading this on a computer?<br />
+            Scan the QR with your phone to download the app directly.
+          </div>
+        </div>
+
+        <p class="fine">
+          During the beta the app installs outside Google Play, so Android will ask for permission
+          to "install unknown apps". That's a normal step — allow it just for this download.
+        </p>
+
+        <div class="footer-links">
+          <a href="/terms">Terms of Service</a>
+          <a href="/privacy">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      function setLang(lang) {
+        document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      }
+      if (!navigator.language.startsWith('es')) setLang('en');
+    </script>
+  </body>
+</html>

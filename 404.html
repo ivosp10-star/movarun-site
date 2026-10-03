@@ -45,6 +45,7 @@
         <h1>Te invitaron a una salida</h1>
         <p>Si tenés MOVA instalada, abrila para ver la salida y sumarte. Si todavía no la tenés, bajala primero — la invitación te espera.</p>
         <a id="open-app" class="btn btn-primary" href="#">Abrir en la app</a>
+        <a id="open-web" class="btn btn-secondary" href="https://app.movarun.com">Abrir en la web</a>
         <a class="btn btn-secondary" href="/apk">Descargar MOVA (Android)</a>
         <p class="home"><a href="/">¿Qué es MOVA?</a></p>
       </div>
@@ -61,11 +62,19 @@
       // los links de invitación /r/<uuid> intentando abrir la app.
       var m = location.pathname.match(/^\/r\/([0-9a-f-]{36})\/?$/i);
       if (m) {
-        var deepLink = 'mova://run/' + m[1];
-        document.getElementById('run-view').style.display = 'block';
-        document.getElementById('open-app').setAttribute('href', deepLink);
-        // intento automático: si la app está instalada, Android la abre
-        setTimeout(function () { location.href = deepLink; }, 60);
+        // iPhone y computadora (spec version-web-pwa §11): directo a la salida en la versión web.
+        var webUrl = 'https://app.movarun.com/run/' + m[1];
+        if (!/Android/i.test(navigator.userAgent)) {
+          location.replace(webUrl);
+        } else {
+          // Android: se intenta abrir la app; si no está, quedan "Abrir en la web" y la descarga.
+          document.getElementById('open-web').setAttribute('href', webUrl);
+          var deepLink = 'mova://run/' + m[1];
+          document.getElementById('run-view').style.display = 'block';
+          document.getElementById('open-app').setAttribute('href', deepLink);
+          // intento automático: si la app está instalada, Android la abre
+          setTimeout(function () { location.href = deepLink; }, 60);
+        }
       } else {
         document.getElementById('notfound-view').style.display = 'block';
       }
